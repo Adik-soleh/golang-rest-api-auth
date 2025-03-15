@@ -190,9 +190,5 @@ go run main.go
 
 ---
 
-## **📜 Lisensi**
-Proyek ini menggunakan lisensi **MIT** – bebas digunakan dan dikembangkan! 🚀  
-
-> **Dibuat dengan ❤️ oleh [Adik Soleh]**  
-
----
+## **📜 Lisensi**  
+Proyek ini pakai lisensi **MIT**, jadi bebas lu pake, modif, atau kembangin sesuka hati! Gaskeun! 🚀🔥    
