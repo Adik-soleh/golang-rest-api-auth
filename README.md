@@ -1,5 +1,3 @@
-Berikut adalah **README** yang menarik untuk proyek autentikasi **Golang + Fiber + GORM** kamu! 🚀  
-
 ---
 
 # **Golang REST API Authentication with Fiber & GORM**  
@@ -16,10 +14,10 @@ Sebuah **REST API Authentication** menggunakan **Golang**, **Fiber**, dan **GORM
 ---
 
 ## **📌 Fitur API**
-✅ **Register User** 👤  
-✅ **Login User** 🔐  
+✅ **Register User dengan Profile Default** 👤  
+✅ **Login User dengan JWT Token** 🔐  
 ✅ **Get All Users** 📋  
-✅ **Get User by ID** 🔎  
+✅ **Get User by ID (Beserta Profile)** 🔎  
 ✅ **JWT Authentication** 🔑  
 
 ---
@@ -69,11 +67,11 @@ go run main.go
   ```json
   {
     "name": "Panjoel",
-    "email": "Panjoel@gmail.com",
+    "email": "panjoel@gmail.com",
     "password": "password123"
   }
   ```
-- **Response:**
+- **Response Jika Sukses:**
   ```json
   {
     "message": "User registered successfully",
@@ -81,8 +79,23 @@ go run main.go
     "data": {
       "id": 1,
       "name": "Panjoel",
-      "email": "Panjoel@gmail.com"
+      "email": "panjoel@gmail.com",
+      "profile": {
+        "id": 1,
+        "username": "Panjoel",
+        "bio": "No bio yet",
+        "phone": "",
+        "image": "default.png"
+      }
     }
+  }
+  ```
+- **Response Jika Email Sudah Terdaftar:**
+  ```json
+  {
+    "message": "Email already exists",
+    "error": true,
+    "data": null
   }
   ```
 
@@ -91,11 +104,11 @@ go run main.go
 - **Request Body:**
   ```json
   {
-    "email": "Panjoel@gmail.com",
+    "email": "panjoel@gmail.com",
     "password": "password123"
   }
   ```
-- **Response:**
+- **Response Jika Berhasil:**
   ```json
   {
     "message": "Login successful",
@@ -103,6 +116,14 @@ go run main.go
     "data": {
       "token": "eyJhbGciOiJIUz..."
     }
+  }
+  ```
+- **Response Jika Gagal (Email atau Password Salah):**
+  ```json
+  {
+    "message": "Invalid credentials",
+    "error": true,
+    "data": null
   }
   ```
 
@@ -117,7 +138,13 @@ go run main.go
       {
         "id": 1,
         "name": "Panjoel",
-        "email": "Panjoel@gmail.com"
+        "email": "panjoel@gmail.com",
+        "profile": {
+          "username": "Panjoel",
+          "bio": "No bio yet",
+          "phone": "",
+          "image": "default.png"
+        }
       }
     ]
   }
@@ -133,7 +160,13 @@ go run main.go
     "data": {
       "id": 1,
       "name": "Panjoel",
-      "email": "Panjoel@gmail.com"
+      "email": "panjoel@gmail.com",
+      "profile": {
+        "username": "Panjoel",
+        "bio": "No bio yet",
+        "phone": "",
+        "image": "default.png"
+      }
     }
   }
   ```
@@ -151,7 +184,7 @@ go run main.go
 ## **🎯 To-Do List**
 ✅ **Register & Login dengan JWT**  
 ✅ **Hash Password dengan Bcrypt**  
-✅ **Get All Users & Get User by ID**  
+✅ **Get All Users & Get User by ID (Beserta Profile)**  
 ⬜ Middleware JWT untuk proteksi endpoint 🔐  
 ⬜ Update & Delete User ✍️  
 
