@@ -54,3 +54,20 @@ func Login(c *fiber.Ctx) error {
 
 	return c.JSON(utils.SuccessResponse("Login successful", fiber.Map{"token": signedToken}))
 }
+
+func GetAllUsers(c *fiber.Ctx) error {
+	var users []models.User
+
+	// Query semua user dari database
+	result := config.DB.Find(&users)
+	if result.Error != nil {
+		return c.Status(500).JSON(utils.ErrorResponse("Failed to retrieve users"))
+	}
+
+	// Jika tidak ada user
+	if len(users) == 0 {
+		return c.JSON(utils.SuccessResponse("No users found", []models.User{}))
+	}
+
+	return c.JSON(utils.SuccessResponse("Users retrieved successfully", users))
+}
