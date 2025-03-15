@@ -71,3 +71,18 @@ func GetAllUsers(c *fiber.Ctx) error {
 
 	return c.JSON(utils.SuccessResponse("Users retrieved successfully", users))
 }
+
+func GetUserById(c *fiber.Ctx) error {
+	// Ambil ID dari parameter URL
+	id := c.Params("id")
+
+	var user models.User
+
+	// Cari user berdasarkan ID
+	result := config.DB.First(&user, id)
+	if result.Error != nil {
+		return c.Status(404).JSON(utils.ErrorResponse("User not found"))
+	}
+
+	return c.JSON(utils.SuccessResponse("User retrieved successfully", user))
+}
