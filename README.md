@@ -140,7 +140,7 @@ go run main.go
         "name": "Panjoel",
         "email": "panjoel@gmail.com",
         "profile": {
-  "id" : 1,
+          "id" : 1,
           "username": "Panjoel",
           "bio": "No bio yet",
           "phone": "",
@@ -163,7 +163,7 @@ go run main.go
       "name": "Panjoel",
       "email": "panjoel@gmail.com",
       "profile": {
-  "id": 1,
+        "id": 1,
         "username": "Panjoel",
         "bio": "No bio yet",
         "phone": "",
